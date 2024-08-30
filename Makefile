@@ -3,10 +3,9 @@
 all : tests format lint
 
 .PHONY: tests
+tests : export PYTHONPATH = .
 tests :
 	@echo "Running tests..."
-	export PYTHONPATH=.  ;\
-	echo $(PYTHONPATH) ;\
 	pytest -v 
 
 .PHONY: lint
