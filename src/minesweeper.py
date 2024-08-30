@@ -1,9 +1,10 @@
+""" This module implements the Minesweeper game. """
 # minesweeper.py
 import random
 
 
 class Minesweeper:
-    def __init__(self, rows, cols, num_mines):
+    def __init__(self, rows:int, cols:int, num_mines:int):
         self.rows = rows
         self.cols = cols
         self.num_mines = num_mines
@@ -13,6 +14,7 @@ class Minesweeper:
         self.place_mines()
 
     def place_mines(self):
+        """ Randomly place mines on the board, updating adjacent cells with mine counts. """
         while len(self.mines) < self.num_mines:
             r, c = random.randint(0, self.rows - 1), random.randint(0, self.cols - 1)
             if (r, c) not in self.mines:
@@ -31,7 +33,11 @@ class Minesweeper:
                         else:
                             self.board[i][j] += 1
 
-    def reveal(self, row, col):
+    def reveal(self, row:int, col:int) -> str:
+        """ Reveal a cell on the board. 
+        Any adjacent cells with no mines are also revealed. 
+        Returns "Game Over" if a mine is revealed, "Continue" otherwise.
+        """
         if (row, col) in self.mines:
             return "Game Over"
         self.revealed.add((row, col))
@@ -47,7 +53,8 @@ class Minesweeper:
                         self.reveal(i, j)
         return "Continue"
 
-    def get_board(self):
+    def get_board(self) -> list:
+        """ Return the current state of the board. """
         return [
             [
                 self.board[r][c] if (r, c) in self.revealed else " "
@@ -56,8 +63,10 @@ class Minesweeper:
             for r in range(self.rows)
         ]
 
-    def is_winner(self):
+    def is_winner(self) -> bool:
+        """ Check if the game has been won. """
         return len(self.revealed) == self.rows * self.cols - self.num_mines
 
-    def restart(self):
-        Minesweeper(self.rows, self.cols, self.num_mines)
+    def restart(self) -> None:
+        """ Restart the game with the same parameters. """
+        self.__init__(self.rows, self.cols, self.num_mines)
