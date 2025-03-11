@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feature/*
 
 jobs:
   deploy-to-app-engine:
