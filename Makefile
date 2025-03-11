@@ -19,3 +19,22 @@ format :
 .PHONY : app
 app :
 	@echo "Running app..."
+
+
+########################################################################################################################
+
+# Setup the virtual environment
+.PHONY : setup
+
+activate :
+	@if ! pyenv virtualenvs | grep -q minesweeper; then \
+		echo "Creating virtualenv..."; \
+		pyenv virtualenv minesweeper; \
+	else \
+		echo "Virtualenv already exists"; \
+	fi
+	pyenv local minesweeper
+
+install : activate
+	@echo "Installing dependencies..."
+	pip install -r requirements.txt

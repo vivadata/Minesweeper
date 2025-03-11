@@ -1,0 +1,22 @@
+name : deploy
+
+on :
+  pull_request :
+    branches :
+      -  maint
+
+jobs :
+  build :
+    runs-on :  ubuntu-latest
+    steps :
+      -  uses :  actions/checkout
+
+      - id : 'auth'
+        uses : 'google-github-actions/auth'
+        with :
+          credentials_json : ${{ secrets.GCP_KEY }}
+
+      - id : 'deploy'
+        uses : 'google-github-actions/deploy-appengine'
+        with :
+          project_id : 'asod-414116'
