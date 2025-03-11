@@ -1,6 +1,8 @@
-import pytest
-from src.minesweeper import Minesweeper
 import random
+
+import pytest
+
+from src.minesweeper import Minesweeper
 
 
 def test_module_exists():

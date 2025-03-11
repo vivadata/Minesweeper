@@ -1,19 +1,21 @@
-
-
 all : tests format lint
 
 .PHONY: tests
 tests : export PYTHONPATH = .
 tests :
 	@echo "Running tests..."
-	pytest -v 
+	pytest -v
 
 .PHONY: lint
 lint :
 	@echo "Running lint..."
-	pylint --rcfile=.pylintrc src 
+	pylint --rcfile=.pylintrc src
 
 .PHONY : format
 format :
 	@echo "Running format..."
 	black .
+
+.PHONY : app
+app :
+	@echo "Running app..."

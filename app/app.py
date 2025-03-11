@@ -1,12 +1,12 @@
 # app.py
-import sys
 import os
-from flask import Flask, render_template, request, redirect, url_for
+import sys
+
+from flask import Flask, redirect, render_template, request, url_for
 
 # Add the src directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from src.minesweeper import Minesweeper
-
 
 app = Flask(__name__)
 
