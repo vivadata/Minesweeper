@@ -3,13 +3,13 @@ name : deploy
 on :
   pull_request :
     branches :
-      -  maint
+      -  main
 
 jobs :
   build :
     runs-on :  ubuntu-latest
     steps :
-      -  uses :  actions/checkout
+      -  uses : 'actions/checkout'
 
       - id : 'auth'
         uses : 'google-github-actions/auth'
