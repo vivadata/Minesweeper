@@ -3,11 +3,9 @@
 # minesweeper.py
 import random
 
-import pytest
-
 
 class Minesweeper:
-    def __init__(self, rows: int, cols: int, num_mines: int):
+    def __init__(self, rows: int, cols: int, num_mines: int) -> None:
         self.rows = rows
         self.cols = cols
         self.num_mines = num_mines
@@ -16,7 +14,7 @@ class Minesweeper:
         self.revealed = set()
         self.place_mines()
 
-    def place_mines(self):
+    def place_mines(self) -> None:
         """Randomly place mines on the board, updating adjacent cells with mine counts."""
         while len(self.mines) < self.num_mines:
             r, c = random.randint(0, self.rows - 1), random.randint(0, self.cols - 1)

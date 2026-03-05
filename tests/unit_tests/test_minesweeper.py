@@ -18,7 +18,7 @@ def game():
     return Minesweeper(5, 5, 3)
 
 
-def test_board_initialization(game):
+def test_board_initialization(game : Minesweeper):
     # Ensure the game board is correctly initialized
     assert game.rows == 5
     assert game.cols == 5
@@ -28,13 +28,13 @@ def test_board_initialization(game):
     assert len(game.mines) == 3
 
 
-def test_mine_placement(game):
+def test_mine_placement(game : Minesweeper):
     # Ensure that mines are placed correctly on the board
     mine_count = sum(row.count("💣") for row in game.board)
     assert mine_count == 3
 
 
-def test_reveal_cell(game):
+def test_reveal_cell(game : Minesweeper):
     # Assume the cell at (2, 2) is surrounded by no mines
 
     random.seed(0)
@@ -45,7 +45,7 @@ def test_reveal_cell(game):
     assert (2, 2) in game.revealed
 
 
-def test_game_over(game):
+def test_game_over(game : Minesweeper):
     # Force a mine at a specific location
     game.mines = {(1, 1)}
     game.board[1][1] = "M"
