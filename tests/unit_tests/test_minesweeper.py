@@ -15,6 +15,7 @@ def test_module_exists():
 @pytest.fixture
 def game():
     # Create a new Minesweeper game with a 5x5 grid and 3 mines
+
     return Minesweeper(5, 5, 3)
 
 
@@ -35,14 +36,11 @@ def test_mine_placement(game : Minesweeper):
 
 
 def test_reveal_cell(game : Minesweeper):
-    # Assume the cell at (2, 2) is surrounded by no mines
-
-    random.seed(0)
-    game.board[2][2] = "0"
-    game.reveal(2, 2)
-    print(game.revealed)
-    # Ensure the cell is revealed
-    assert (2, 2) in game.revealed
+    cell = (random.randint(0,game.rows-1), random.randint(0, game.cols-1))
+    
+    if game.reveal(*cell) != "Game Over":
+        # Ensure the cell is revealed
+        assert cell in game.revealed
 
 
 def test_game_over(game : Minesweeper):

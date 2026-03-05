@@ -1,19 +1,50 @@
 # Minesweeper
 
-## Run tests
+## Quick start
+
+Prerequisites:
+- `pyenv`
+- `pyenv-virtualenv`
+
+Install dependencies:
+
+```bash
+make install
+```
+
+Run the app:
+
+```bash
+make app
+```
+
+## Tests
+
+Run all tests:
 
 ```bash
 make tests
 ```
 
-## Run tests with coverage
+Run test subsets:
+
+```bash
+make unit-tests
+make functional-tests
+```
+
+## Coverage
+
+Generate coverage reports:
 
 ```bash
 make coverage
 ```
 
-This command generates:
-- a terminal coverage summary with missing lines
-- `coverage.xml` (useful for CI integrations)
+Outputs:
+- terminal summary (`term-missing`)
+- `tests_result/coverage.xml`
+- `tests_result/junit.xml`
+- `tests_result/htmlcov/index.html`
 
-Coverage is configured in `.coveragerc` and focuses on `web/` and `src/` code.
+Coverage scope is configured in `.coveragerc` for `src/` and `web/`.
