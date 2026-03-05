@@ -1,0 +1,13 @@
+[run]
+branch = True
+source =
+    web
+    src
+omit =
+    tests/*
+    */__init__.py
+    */__pycache__/*
+
+[report]
+show_missing = True
+skip_covered = False

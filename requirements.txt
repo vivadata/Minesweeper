@@ -14,6 +14,8 @@ click==8.1.7
     # via
     #   black
     #   flask
+coverage==7.6.1
+    # via pytest-cov
 dill==0.3.8
     # via pylint
 exceptiongroup==1.2.2
@@ -53,6 +55,8 @@ pluggy==1.5.0
 pylint==3.2.6
     # via -r requirements.in
 pytest==8.3.2
+    # via -r requirements.in
+pytest-cov==5.0.0
     # via -r requirements.in
 tomli==2.0.1
     # via

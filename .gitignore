@@ -3,5 +3,11 @@
 __pycache__/
 *.py[cod]
 *.pyc
-
 .python-version
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+tests_result/*
+!tests_result/.gitkeep
