@@ -38,5 +38,5 @@ def restart():
     return redirect(url_for("index"))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     app.run(debug=True, port=int(os.environ.get("PORT", 8080)))
