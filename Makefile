@@ -77,3 +77,31 @@ install : activate
 	@echo "Installing dependencies..."
 	pip install --upgrade pip
 	pip install -r requirements.txt
+
+
+#########################################################################################################################
+
+# Docker 
+
+#########################################################################################################################
+
+build :
+	@echo "Building Docker image..."
+	docker build -t ${IMAGE}:latest .
+
+run : 
+	@echo "Running Docker container..."
+	docker run -p ${PORT}:${PORT} ${IMAGE}:latest
+
+authenticate:
+	@echo "Authenticating with GCP..."
+	gcloud auth configure-docker ${REGION}.pkg.dev
+
+build_gcp : 
+	@echo "Renaming or Building Docker image for GCP..."
+	# europe-west1-docker.pkg.dev/asod-414116/asod-public-images
+	docker build --platform=linux/amd64 -t ${REGION}.pkg.dev/${GCP_PROJECT}/${REPOSITORY}/${IMAGE}:latest .
+
+push_gcp : build_gcp
+	@echo "Pushing Docker image to GCP..."
+	docker push ${REGION}.pkg.dev/${GCP_PROJECT}/${REPOSITORY}/${IMAGE}

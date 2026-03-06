@@ -11,3 +11,6 @@ coverage.xml
 htmlcov/
 tests_result/*
 !tests_result/.gitkeep
+
+# Env Files
+.env

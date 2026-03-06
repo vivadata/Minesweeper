@@ -4,6 +4,11 @@
 #
 #    pip-compile requirements.in
 #
+# AFFREUX
+SQLAlchemy==2.0.8
+psycopg2-binary
+
+
 astroid==3.2.4
     # via pylint
 black==24.8.0
