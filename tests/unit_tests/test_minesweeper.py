@@ -37,11 +37,9 @@ def test_mine_placement(game : Minesweeper):
 
 def test_reveal_cell(game : Minesweeper):
     cell = (random.randint(0,game.rows-1), random.randint(0, game.cols-1))
-    
     if game.reveal(*cell) != "Game Over":
         # Ensure the cell is revealed
         assert cell in game.revealed
-
 
 def test_game_over(game : Minesweeper):
     # Force a mine at a specific location
